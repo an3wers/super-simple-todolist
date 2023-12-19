@@ -1,0 +1,7 @@
+/server/node_modules
+/server/dist
+/postgres
+/pg-admin-data
+/app/node_modules
+/app/dist
+/client-vite
