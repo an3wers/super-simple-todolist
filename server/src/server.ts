@@ -4,6 +4,7 @@ import { sequelize } from "./db/db";
 import todosRoutes from "./routes/todos.route";
 import path from "path";
 import cors from "cors";
+import logger from "./middleware/logger";
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ server.use(express.json());
 
 server.use(cors());
 server.use("/static", express.static(path.resolve(path.resolve(), "static")));
+server.use("/api", logger);
 server.use("/api", todosRoutes);
 
 server.get("/api", (req, res) => {

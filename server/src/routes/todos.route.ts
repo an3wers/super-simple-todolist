@@ -8,7 +8,7 @@ import {
 
 const router = Router();
 
-router.get("/todos", async (res: Response, req: Request) => {
+router.get("/todos", async (req: Request, res: Response) => {
   try {
     const response = await getAll();
     res.send({ data: response, success: true });
@@ -17,7 +17,7 @@ router.get("/todos", async (res: Response, req: Request) => {
   }
 });
 
-router.post("/todos", async (res: Response, req: Request) => {
+router.post("/todos", async (req: Request, res: Response) => {
   try {
     const { title } = req.body;
     const response = await createItem(title);
@@ -27,7 +27,7 @@ router.post("/todos", async (res: Response, req: Request) => {
   }
 });
 
-router.put("/todos/:id", async (res: Response, req: Request) => {
+router.put("/todos/:id", async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const { isDone } = req.body;
@@ -38,7 +38,7 @@ router.put("/todos/:id", async (res: Response, req: Request) => {
   }
 });
 
-router.delete("/todos/:id", async (res: Response, req: Request) => {
+router.delete("/todos/:id", async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const response = await deleteItem(id);
