@@ -7,7 +7,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
 const { DefinePlugin } = require("webpack");
 
-const isProduction = process.env.NODE_ENV == "production";
+const isProduction = process.env.NODE_ENV == "development";
 
 const stylesHandler = isProduction
   ? MiniCssExtractPlugin.loader
@@ -36,6 +36,7 @@ const config = {
     chunkFilename: "static/js/[name].[contenthash:8].chunk.js",
     assetModuleFilename: "static/[name].[hash:8].[ext]",
   },
+  performance: {hints: false},
   devServer: {
     port: 5173,
   },
@@ -110,7 +111,7 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "webpack5+vue示例",
+      title: "TodoList",
       filename: "index.html",
       template: "./public/index.html",
       minify: isProduction
@@ -186,10 +187,10 @@ module.exports = () => {
       })
     );
 
-    config.externals = {
-      vue: "Vue",
-      "vue-router": "VueRouter",
-    };
+    // config.externals = {
+    //   vue: "Vue",
+    //   "vue-router": "VueRouter",
+    // };
   }
   return config;
 };

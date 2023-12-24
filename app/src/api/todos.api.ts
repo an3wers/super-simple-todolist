@@ -1,4 +1,4 @@
-const apiUrl = "http://localhost:5000/api";
+const apiUrl = "http://localhost:5007/api";
 
 interface BaseResponse {
   data?: any;
@@ -17,7 +17,7 @@ export const createTodo = async (title: string): Promise<BaseResponse> => {
     body: JSON.stringify({ title }),
   }).then((response) => response.json());
 };
-
+ 
 export const removeTodo = async (id: string | number) => {
   return await fetch(`${apiUrl}/todos/${id}`, { method: "DELETE" }).then(
     (response) => response.json()

@@ -9,7 +9,7 @@ import logger from "./middleware/logger";
 dotenv.config();
 
 const server = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5007;
 
 server.use(express.json());
 
